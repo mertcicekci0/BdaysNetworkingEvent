@@ -1,0 +1,131 @@
+.leaderboard-card {
+    background-color: var(--surface-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg);
+}
+
+.leaderboard-card h2 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    background-color: var(--background-color);
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.leaderboard-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.rank {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    min-width: 2rem;
+    text-align: center;
+}
+
+.rank.top-1 {
+    color: #FFD700;
+}
+
+.rank.top-2 {
+    color: #C0C0C0;
+}
+
+.rank.top-3 {
+    color: #CD7F32;
+}
+
+.user-info {
+    flex: 1;
+    margin: 0 var(--spacing-md);
+}
+
+.user-info strong {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.user-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.user-info a:hover {
+    text-decoration: underline;
+}
+
+.points {
+    font-weight: 600;
+    color: var(--success-color);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--surface-color);
+    border-radius: var(--radius-sm);
+    min-width: 4rem;
+    text-align: center;
+}
+
+/* Animation */
+.leaderboard-item {
+    animation: slideIn 0.3s ease-out;
+    animation-fill-mode: both;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Stagger animation for items */
+.leaderboard-item:nth-child(1) { animation-delay: 0.1s; }
+.leaderboard-item:nth-child(2) { animation-delay: 0.2s; }
+.leaderboard-item:nth-child(3) { animation-delay: 0.3s; }
+.leaderboard-item:nth-child(4) { animation-delay: 0.4s; }
+.leaderboard-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .leaderboard-card {
+        margin-top: var(--spacing-lg);
+    }
+    
+    .leaderboard-item {
+        padding: var(--spacing-sm);
+    }
+    
+    .rank {
+        font-size: 1rem;
+        min-width: 1.5rem;
+    }
+    
+    .points {
+        min-width: 3rem;
+        font-size: 0.875rem;
+    }
+} 
