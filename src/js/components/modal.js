@@ -36,7 +36,7 @@ class ModalManager {
                 break;
             case 'name':
                 isValid = value.length >= 3;
-                errorMessage = 'İsim en az 3 karakter olmalıdır';
+                errorMessage = 'İsim en az 3 karakterden oluşmalıdır';
                 break;
         }
 

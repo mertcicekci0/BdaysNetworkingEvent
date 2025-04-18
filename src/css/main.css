@@ -42,10 +42,21 @@ body {
     color: var(--text-primary);
     line-height: 1.5;
     min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* Container */
 .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
@@ -59,6 +70,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%;
 }
 
 .app-header .container {
@@ -125,7 +137,6 @@ body {
 }
 
 .btn-primary {
-    width: 100%;
     padding: var(--spacing-md);
     font-size: 1rem;
     font-weight: 600;
@@ -158,6 +169,7 @@ body {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     padding: var(--spacing-lg);
+    width: 100%;
 }
 
 /* Utility Classes */
@@ -165,20 +177,26 @@ body {
     display: none !important;
 }
 
+.required {
+    color: var(--error-color);
+}
+
 /* Main Content Layout */
 .main-content {
     padding: var(--spacing-xl) 0;
+    width: 100%;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--spacing-xl);
+    width: 100%;
 }
 
 /* Profile Section */
 .profile-section {
-    grid-column: 1 / 2;
+    width: 100%;
 }
 
 .profile-card {
@@ -186,6 +204,7 @@ body {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     overflow: hidden;
+    width: 100%;
 }
 
 .profile-header {
@@ -194,11 +213,13 @@ body {
     align-items: center;
     padding: var(--spacing-lg);
     border-bottom: 1px solid var(--border-color);
+    width: 100%;
 }
 
 .profile-header h2 {
     font-size: 1.25rem;
-    margin: 0;
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 .profile-info {
@@ -398,98 +419,130 @@ body {
     .container {
         padding: 0 var(--spacing-sm);
     }
-
+    
     .header-left h1 {
         font-size: 1rem;
     }
-
+    
     .header-logo {
         width: 24px;
     }
-
+    
     .header-actions {
         gap: var(--spacing-sm);
     }
-
+    
     .user-score {
-        font-size: 0.875rem;
+        font-size: 0.8rem;
+        padding: var(--spacing-xs);
     }
-
+    
     .grid-container {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
-
+    
     .profile-section {
-        grid-column: 1;
+        grid-column: auto;
     }
-
+    
     .profile-card,
     .qr-scanner-card,
     .leaderboard-card {
-        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
     }
-
+    
     .modal {
-        align-items: flex-start;
-        overflow-y: auto;
+        padding: var(--spacing-sm);
+    }
+    
+    .modal::before {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .modal-content {
+        width: 90%;
+        max-width: 90%;
         padding: var(--spacing-md);
     }
-
-    .modal::before {
-        background: linear-gradient(180deg, 
-            rgba(255, 255, 255, 0.1) 0%, 
-            rgba(255, 255, 255, 0.15) 100%),
-            url('../assets/images/bdays-background.png') center/cover no-repeat;
-        filter: blur(8px);
-    }
-
-    .modal-content {
-        margin: 10% auto;
-        padding: var(--spacing-lg);
-        width: 90%;
-        max-width: 400px;
-    }
-
+    
     .modal-header {
         flex-direction: column;
-        align-items: center;
         text-align: center;
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm);
     }
-
+    
     .modal-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
-
+    
     .modal-logo {
-        width: 50px;
-        margin: 0;
+        width: 60px;
+        height: auto;
     }
-
+    
     .modal-description {
+        font-size: 0.9rem;
+    }
+    
+    .form-group input,
+    .form-group button {
+        font-size: 0.9rem;
+    }
+    
+    .profile-info {
+        padding: var(--spacing-md);
+    }
+    
+    .friends-section h3 {
+        padding-left: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+    .app-header .container {
+        flex-direction: column;
+        padding: var(--spacing-sm);
+    }
+    
+    .header-left {
+        margin-bottom: var(--spacing-sm);
+        justify-content: center;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .main-content {
+        padding: var(--spacing-md) 0;
+    }
+    
+    .profile-header {
+        flex-direction: column;
+        gap: var(--spacing-sm);
         text-align: center;
     }
-
-    .form-group input,
-    .phone-input-container,
-    .btn-primary {
-        font-size: 16px;
+    
+    .profile-header button {
+        width: 100%;
     }
-
-    #reader {
-        max-height: 300px;
-    }
-
-    .qr-container {
-        width: 200px;
-        height: 200px;
-        margin: 0 auto;
-    }
-
-    .leaderboard-item {
+    
+    .btn {
         padding: var(--spacing-sm);
-        font-size: 0.875rem;
+        font-size: 0.8rem;
+    }
+    
+    #logout-button {
+        width: 100%;
+        text-align: center;
     }
 }
 
@@ -525,4 +578,52 @@ body {
     .app-header {
         padding-top: env(safe-area-inset-top);
     }
+}
+
+/* LinkedIn Login Styles */
+.linkedin-login-container {
+    margin-bottom: var(--spacing-lg);
+}
+
+.btn-linkedin {
+    width: 100%;
+    background-color: #0077B5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-linkedin:hover {
+    background-color: #006097;
+}
+
+.linkedin-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: var(--spacing-md) 0;
+    color: var(--text-secondary);
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.divider span {
+    padding: 0 var(--spacing-md);
+    font-size: 0.875rem;
 } 

@@ -33,9 +33,6 @@ class App {
 
     static handleLogout() {
         if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
-            // Stop QR scanner
-            QRManager.stopScanner();
-            
             // Clear user data
             StorageManager.clearAll();
             
@@ -57,7 +54,6 @@ class App {
     static resetApp() {
         if (confirm('Tüm veriler silinecek. Emin misiniz?')) {
             StorageManager.clearAll();
-            QRManager.stopScanner();
             window.location.reload();
         }
     }

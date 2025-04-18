@@ -14,9 +14,9 @@ class ProfileManager {
     }
 
     static setupEventListeners() {
-        this.elements.editButton.addEventListener('click', () => {
-            this.showEditModal();
-        });
+        if (this.elements.editButton) {
+            this.elements.editButton.addEventListener('click', () => this.showEditModal());
+        }
     }
 
     static updateProfile() {
@@ -25,10 +25,20 @@ class ProfileManager {
 
         this.elements.name.textContent = userData.name;
         this.elements.email.textContent = userData.email;
-        this.elements.phone.textContent = userData.phone;
-        this.elements.linkedin.href = userData.linkedin;
-        this.elements.linkedin.textContent = userData.linkedin;
-        this.elements.points.textContent = userData.points;
+        this.elements.phone.textContent = userData.phone || 'Belirtilmedi';
+        
+        // LinkedIn profil linki
+        if (userData.linkedin) {
+            this.elements.linkedin.href = userData.linkedin;
+            this.elements.linkedin.textContent = 'Profili Görüntüle';
+            this.elements.linkedin.style.display = 'inline-block';
+        } else {
+            this.elements.linkedin.href = '#';
+            this.elements.linkedin.textContent = 'Belirtilmedi';
+            this.elements.linkedin.style.display = 'none';
+        }
+        
+        this.elements.points.textContent = userData.points || 0;
     }
 
     static showEditModal() {
@@ -51,12 +61,12 @@ class ProfileManager {
                         <input type="email" id="edit-email" value="${userData.email}" required>
                     </div>
                     <div class="form-group">
-                        <label for="edit-phone">Telefon Numarası</label>
-                        <input type="tel" id="edit-phone" value="${userData.phone}" required>
+                        <label for="edit-phone">Telefon Numarası (Opsiyonel)</label>
+                        <input type="tel" id="edit-phone" value="${userData.phone || ''}">
                     </div>
                     <div class="form-group">
-                        <label for="edit-linkedin">LinkedIn URL</label>
-                        <input type="url" id="edit-linkedin" value="${userData.linkedin}" required>
+                        <label for="edit-linkedin">LinkedIn Profili (Opsiyonel)</label>
+                        <input type="url" id="edit-linkedin" value="${userData.linkedin || ''}" placeholder="https://linkedin.com/in/username">
                     </div>
                     <div class="button-group">
                         <button type="submit" class="btn btn-primary">Kaydet</button>
@@ -90,8 +100,8 @@ class ProfileManager {
             ...StorageManager.getUserData(),
             name: form.querySelector('#edit-name').value,
             email: form.querySelector('#edit-email').value,
-            phone: form.querySelector('#edit-phone').value,
-            linkedin: form.querySelector('#edit-linkedin').value
+            phone: form.querySelector('#edit-phone').value || '',
+            linkedin: form.querySelector('#edit-linkedin').value || ''
         };
 
         // Update user data

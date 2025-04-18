@@ -25,9 +25,13 @@ const ANIMATION = {
     LEADERBOARD_UPDATE: 1000
 };
 
-// API Endpoints (if needed in the future)
+// API Endpoints
 const API = {
-    QR_GENERATOR: 'https://api.qrserver.com/v1/create-qr-code/'
+    QR_GENERATOR: 'https://api.qrserver.com/v1/create-qr-code/',
+    WRITE_USER: 'https://b34fgpro7k.execute-api.eu-central-1.amazonaws.com/default/bdays-write-user',
+    READ_USER: 'https://manxq01vdd.execute-api.eu-central-1.amazonaws.com/default/bdays-read-use',
+    READ_USER_BY_NAME: 'https://waq6xksnbf.execute-api.eu-central-1.amazonaws.com/default/bdays-read-by-name',
+    ADD_FRIENDS: 'https://jkrxhvqegh.execute-api.eu-central-1.amazonaws.com/default/bdays-add-friends'
 };
 
 // Validation Rules
@@ -35,4 +39,7 @@ const VALIDATION = {
     EMAIL_REGEX: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     PHONE_REGEX: /^[0-9]{10,11}$/,
     LINKEDIN_REGEX: /^https:\/\/[w]{0,3}\.?linkedin\.com\/.*$/
-}; 
+};   
+
+
+

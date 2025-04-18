@@ -28,13 +28,18 @@ class LeaderboardManager {
             item.className = 'leaderboard-item';
             item.style.animationDelay = `${index * 0.1}s`;
 
+            // LinkedIn alanı kontrolü yapıp butonları ona göre oluşturuyoruz
+            const linkedInLink = user.linkedin 
+                ? `<a href="${user.linkedin}" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                    <span class="linkedin-icon"></span>
+                  </a>`
+                : '';
+
             item.innerHTML = `
                 <span class="rank ${index < 3 ? 'top-' + (index + 1) : ''}">#${index + 1}</span>
                 <div class="user-info">
                     <strong>${user.name}</strong>
-                    <a href="${user.linkedin}" target="_blank" rel="noopener noreferrer">
-                        LinkedIn Profili
-                    </a>
+                    ${linkedInLink}
                 </div>
                 <span class="points">${user.points} puan</span>
             `;
